@@ -38,7 +38,6 @@ public class WebConfig implements WebMvcConfigurer {
         this.applicationContext = applicationContext;
     }
 
-
     @Autowired
     private Environment env;
 
@@ -89,12 +88,6 @@ public class WebConfig implements WebMvcConfigurer {
         transactionManager.setSessionFactory(getSessionFactory().getObject());
         return transactionManager;
     }
-//
-//    @Bean
-//    public UserService getUserService(){
-//        UserService userService = applicationContext.getBean(UserService.class);
-//        return userService;
-//    }
 
     @Override
     public void configureViewResolvers(ViewResolverRegistry registry) {
