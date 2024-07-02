@@ -1,11 +1,15 @@
 package web.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import web.model.Car;
+import web.model.User;
 import web.service.CarService;
 import web.service.CarServiceImp;
+import web.service.UserService;
+import web.service.UserServiceImp;
 import web.util.Colors;
 
 import java.util.ArrayList;
@@ -14,6 +18,9 @@ import java.util.List;
 @Controller
 public class HelloController {
 
+	@Autowired
+	UserService userService;
+
 	@GetMapping(value = "/")
 	public String printWelcome(ModelMap model) {
 		List<String> messages = new ArrayList<>();
@@ -21,6 +28,9 @@ public class HelloController {
 		messages.add("I'm Spring MVC application");
 		messages.add("5.2.0 version by sep'19 ");
 		model.addAttribute("messages", messages);
+		User user1 = new User("Vasya",35,"Ivanov");
+		userService.add(user1);
+		System.out.println(user1);
 		return "index";
 	}
 
